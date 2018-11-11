@@ -4,32 +4,6 @@ import requests
 import json
 
 
-#ConcertBuilder class will use output from ticketmasterapi function
-#and parsing functions from EventsParser class to output
-#sqlalchemy objects
-
-class ConcertBuilder:
-    def __init__(self, url):
-        self.url = url
-
-    def run(self):
-        all_concerts = []
-        tm = TicketMasterAPI(self.url)
-        for i in tm.data_pull():
-            parser = EventsParser(i)
-            concert = Concert(name=parser.concert_name(),
-            date=parser.concert_date(), minimum_price=parser.concert_minimum_price(),
-            maximumum_price=parser.concert_maximum_price(), url=parser.concert_url(),
-            artists=Artist(name=parser.concert_artist()),
-            genres=Genre(name=parser.concert_genre()),
-            venues=Venue(name=parser.concert_venue_name(), city=parser.concert_venue_city(),
-            address=parser.concert_venue_address(), latitude=parser.concert_venue_latitude(),
-            longitude=parser.concert_venue_longitude()))
-            all_concerts.append(concert)
-        return all_concerts
-
-
-
 #class function to pull in json event data from ticketmaster API
 #output will be a list of events
 #api address for first page of results: 'https://app.ticketmaster.com/discovery/v2/events.json?latlong=40.754900,-73.984000&radius=8&unit=miles&source=ticketmaster&classificationName=music&startDateTime=2018-11-09T14:00:00Z&page=0&size=200&sort=relevance,desc&apikey=rah2o9AS2HbqU4x2DwAbsRZA35MutNT4'
