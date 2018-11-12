@@ -1,7 +1,7 @@
 from models import Base, Concert, Artist, Genre, Venue
-from ticketmasterscraper import TicketMasterAPI, TicketmasterEventsParser
-from ticketwebparser import TicketWebParser
-from eventbritescraper import EventbriteAPI, EventbriteEventsParser
+from ticketmasterapi import TicketMasterAPI, TicketmasterEventsParser
+from ticketwebscraper import TicketWebParser
+from eventbriteapi import EventbriteAPI, EventbriteEventsParser
 from bs4 import BeautifulSoup
 import sqlalchemy
 engine = sqlalchemy.create_engine('sqlite:///nycconcertdatabase.db', echo=True)
