@@ -105,3 +105,42 @@ def parse_through_apis():
         url = f"https://www.eventbriteapi.com/v3/events/search/?page={i}&categories=103&start_date.range_start=2018-11-08T00:00:00Z&price=paid&location.latitude=40.7549&location.longitude=-73.9840&location.within=8mi&expand=venue,subcategory,ticket_availability&token=XZYQ3WKQV5AWJJSDWP5L"
         builder = EventbriteConcertBuilder(url)
         builder.run()
+
+
+
+#fixing hiphop / rap genre
+def hiphop():
+    concerts = session.query(Concert).join(Genre).filter(Genre.name == "Hip Hop / Rap")
+    hiphop_genre = session.query(Genre).filter(Genre.name == "Hip-Hop/Rap").first()
+    for concert in concerts:
+        concert.genres = hiphop_genre
+        session.add(concert)
+        session.commit()
+
+#fixing jazz genre
+def jazz():
+    concerts = session.query(Concert).join(Genre).filter(Genre.name == "Jazz")
+    jazz_genre = session.query(Genre).filter(Genre.name == "Blues & Jazz").first()
+    for concert in concerts:
+        concert.genres = jazz_genre
+        session.add(concert)
+        session.commit()
+
+#fixing religious genre
+def religious():
+    concerts = session.query(Concert).join(Genre).filter(Genre.name == "Religious/Spiritual")
+    jazz_genre = session.query(Genre).filter(Genre.name == "Religious").first()
+    for concert in concerts:
+        concert.genres = jazz_genre
+        session.add(concert)
+        session.commit()
+
+
+#fixing other genre
+def other():
+    concerts = session.query(Concert).join(Genre).filter(Genre.name == "Undefined")
+    other_genre = session.query(Genre).filter(Genre.name == "Other").first()
+    for concert in concerts:
+        concert.genres = other_genre
+        session.add(concert)
+        session.commit()
