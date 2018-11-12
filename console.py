@@ -4,7 +4,7 @@ from ticketwebparser import TicketWebParser
 from eventbritescraper import EventbriteAPI, EventbriteEventsParser
 from bs4 import BeautifulSoup
 import sqlalchemy
-engine = sqlalchemy.create_engine('sqlite:///ticketmasterdatabase.db', echo=True)
+engine = sqlalchemy.create_engine('sqlite:///nycconcertdatabase.db', echo=True)
 
 Base.metadata.create_all(engine)
 
