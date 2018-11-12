@@ -144,3 +144,13 @@ def other():
         concert.genres = other_genre
         session.add(concert)
         session.commit()
+
+
+#fixing electronic genre
+def electronic():
+    concerts = session.query(Concert).join(Genre).filter(Genre.name == "EDM / Electronic")
+    electronic_genre = session.query(Genre).filter(Genre.name == "Dance/Electronic").first()
+    for concert in concerts:
+        concert.genres = electronic_genre
+        session.add(concert)
+        session.commit()
