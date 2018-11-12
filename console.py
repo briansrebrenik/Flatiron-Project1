@@ -58,7 +58,7 @@ class TicketmasterConcertBuilder:
 # page5 = 'https://app.ticketmaster.com/discovery/v2/events.json?latlong=40.754900,-73.984000&radius=8&unit=miles&source=ticketmaster&classificationName=music&startDateTime=2018-11-09T14:00:00Z&page=0&size=200&sort=relevance,asc&apikey=rah2o9AS2HbqU4x2DwAbsRZA35MutNT4'
 
 
-#function to add ticketweb prices
+#function to scrape and add ticketweb prices
 def add_ticket_web_prices():
     concerts = session.query(Concert).filter(Concert.minimum_price == None).all()
     for concert in concerts:
@@ -152,5 +152,14 @@ def electronic():
     electronic_genre = session.query(Genre).filter(Genre.name == "Dance/Electronic").first()
     for concert in concerts:
         concert.genres = electronic_genre
+        session.add(concert)
+        session.commit()
+
+#fixing pop genre
+def pop():
+    concerts = session.query(Concert).join(Genre).filter(Genre.name == "Top 40")
+    pop_genre = session.query(Genre).filter(Genre.name == "Pop").first()
+    for concert in concerts:
+        concert.genres = pop_genre
         session.add(concert)
         session.commit()
