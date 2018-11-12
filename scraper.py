@@ -52,8 +52,11 @@ class EventsParser:
 
     #retrieve concert artist/artists
     def concert_artist(self):
-        return self.individual_concert_data['_embedded']['attractions'][0]['name']
-
+        try:
+            return self.individual_concert_data['_embedded']['attractions'][0]['name']
+        except:
+            pass
+            
     #retrieves genre
     def concert_genre(self):
         try:
