@@ -6,7 +6,7 @@ import json
 
 #class function to pull in json event data from ticketmaster API
 #output will be a list of events
-#api address for first page of results: 'https://app.ticketmaster.com/discovery/v2/events.json?latlong=40.754900,-73.984000&radius=8&unit=miles&source=ticketmaster&classificationName=music&startDateTime=2018-11-09T14:00:00Z&page=0&size=200&sort=relevance,desc&apikey=rah2o9AS2HbqU4x2DwAbsRZA35MutNT4'
+
 class TicketMasterAPI:
 
     def __init__(self, url):
@@ -20,7 +20,7 @@ class TicketMasterAPI:
 
 
 #class to define parsing functions
-class EventsParser:
+class TicketmasterEventsParser:
     def __init__(self, individual_concert_data):
         self.individual_concert_data = individual_concert_data
 
@@ -56,7 +56,7 @@ class EventsParser:
             return self.individual_concert_data['_embedded']['attractions'][0]['name']
         except:
             pass
-            
+
     #retrieves genre
     def concert_genre(self):
         try:
