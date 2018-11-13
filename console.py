@@ -12,11 +12,10 @@ from sqlalchemy.orm import sessionmaker
 Session = sessionmaker(bind=engine)
 session = Session()
 
-from sqlalchemy.orm.exc import NoResultFound
-
-
 
 #goc = "get one or create" queries databse to check to make sure object has not already been initialized
+#will use this function in Ticketmaster and Eventbrite ConcertBuilder
+from sqlalchemy.orm.exc import NoResultFound
 def goc(session, model,**kwargs):
    try:
        return session.query(model).filter_by(**kwargs).one()
@@ -77,7 +76,6 @@ def add_ticket_web_prices():
 #and parsing functions from EventsParser class to output
 #sqlalchemy objects
 
-
 class EventbriteConcertBuilder:
     def __init__(self, url):
         self.url = url
@@ -99,7 +97,7 @@ class EventbriteConcertBuilder:
 
 
 
-#function to cycle through all eventbrite addresses
+#function to cycle through all eventbrite addresses and add data to database
 def parse_through_apis():
     for i in range(1, 28):
         url = f"https://www.eventbriteapi.com/v3/events/search/?page={i}&categories=103&start_date.range_start=2018-11-08T00:00:00Z&price=paid&location.latitude=40.7549&location.longitude=-73.9840&location.within=8mi&expand=venue,subcategory,ticket_availability&token=XZYQ3WKQV5AWJJSDWP5L"

@@ -48,4 +48,5 @@ class Venue(Base):
     address = Column(Text)
     latitude = Column(Float)
     longitude = Column(Float)
+    zip = Column(Integer)
     concerts = relationship('Concert', back_populates='venues')
