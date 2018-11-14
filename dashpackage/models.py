@@ -1,11 +1,9 @@
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
-from sqlalchemy import *
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, Text
+from dash_package import db
 
 
 #creating concert class/table
-class Concert(Base):
+class Concert(db.Model):
     __tablename__ = 'concerts'
     id = Column(Integer, primary_key=True)
     name = Column(Text)
@@ -21,7 +19,7 @@ class Concert(Base):
     venues = relationship('Venue', back_populates='concerts')
 
 #creating artist class/table
-class Artist(Base):
+class Artist(db.Model):
     __tablename__ = 'artists'
     id = Column(Integer, primary_key=True)
     name = Column(Text)
@@ -32,7 +30,7 @@ class Artist(Base):
 
 
 #creating genre class/table
-class Genre(Base):
+class Genre(db.Model):
     __tablename__ = 'genres'
     id = Column(Integer, primary_key=True)
     name = Column(Text)
@@ -41,7 +39,7 @@ class Genre(Base):
     venues = relationship('Venue', back_populates='genres')
 
 #creating venue class/table
-class Venue(Base):
+class Venue(db.Model):
     __tablename__ = 'venues'
     id = Column(Integer, primary_key=True)
     name = Column(Text)

@@ -1,5 +1,5 @@
-from models import Base, Concert, Artist, Genre, Venue
-from console import engine, session
+from models import Concert, Artist, Genre, Venue
+from dashpackage import app, db
 import sqlalchemy
 
 
