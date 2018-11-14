@@ -1,11 +1,11 @@
 from models import Concert, Artist, Genre, Venue
 from dashpackage import app, db
-import sqlalchemy
+from sqlalchemy import func
 
 
 #top genres in borough
 def top_genres_borough(borough):
-    return session.query(Genre.name, sqlalchemy.func.count(Genre.name)).join(Concert).join(Venue).group_by(Genre.name).filter(Venue.borough == borough).all()
+    return db.session.query(Genre.name, func.count(Genre.name)).join(Concert).join(Venue).group_by(Genre.name).filter(Venue.borough == borough).all()
 
 #average minimum price by borough
 def avg_price_by_borough():
