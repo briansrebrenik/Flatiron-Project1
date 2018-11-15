@@ -5,18 +5,20 @@ from dashpackage.routes import *
 import dash
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output
+from flask import send_from_directory
 
 app.config['suppress_callback_exceptions']=True
-colors = {'background': '#0000FF','text': '#7FDBFF'}
 
 
 
 app.layout = html.Div(children=[
+            html.Img(src='/assets/pic11.jpg'),
             html.H1("NYC Concert Database"),
+
             dcc.Tabs(id="tabs", value="tab-1", children=[
         dcc.Tab(label='Top Genres', value='tab-1'),
         dcc.Tab(label='Average Price by Neighborhood', value='tab-2'),
-        dcc.Tab(label='Free Concerts', value='tab-3'),
+        dcc.Tab(label='Locations of Free Concerts', value='tab-3'),
     ]),
     html.Div(id='tabs-content')
 ])
@@ -50,7 +52,29 @@ def display_content(value):
         ))
         )])
     elif value == 'tab-3':
-        return html.div([])
+        return html.Div([dcc.Graph(figure= go.Figure(data= [
+        go.Scattermapbox(
+        lat=[location[0] for location in locations_of_free_concerts()],
+        lon=[location[1] for location in locations_of_free_concerts()],
+        mode='markers'
+        )
+        ],
+        layout = go.Layout(
+        autosize=True,
+        hovermode='closest',
+        mapbox=dict(
+        accesstoken='pk.eyJ1IjoiYnJpYW5zcmVicmVuaWsiLCJhIjoiY2pueHczamFuMDUwejNxcGM1eHRyZm5teSJ9.NIOkbUhPC4alvnd67eRQVA',
+        bearing=0,
+        center=dict(
+            lat=40.7831,
+            lon=-73.9712
+        ),
+        style='dark',
+        pitch=0,
+        zoom=9
+        ),
+        )
+        ))])
 
 #generate graph for top genres / borough in tab1
 @app.callback(
