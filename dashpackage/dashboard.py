@@ -19,6 +19,7 @@ app.layout = html.Div(children=[
         dcc.Tab(label='Top Genres', value='tab-1'),
         dcc.Tab(label='Average Price by Neighborhood', value='tab-2'),
         dcc.Tab(label='Locations of Free Concerts', value='tab-3'),
+        dcc.Tab(label='Average Price by Genre', value='tab-4')
     ]),
     html.Div(id='tabs-content')
 ])
@@ -52,6 +53,7 @@ def display_content(value):
         ))
         )])
     elif value == 'tab-3':
+        #generate map for tab3
         return html.Div([dcc.Graph(figure= go.Figure(data= [
         go.Scattermapbox(
         lat=[location[0] for location in locations_of_free_concerts()],
@@ -75,6 +77,19 @@ def display_content(value):
         ),
         )
         ))])
+    elif value == 'tab-4':
+        #generate graph for tab4
+        return html.Div([dcc.Graph(figure= go.Figure(data= [
+        go.Scatter(
+        x=[tuples[1] for tuples in avg_price_by_genre()],
+        y=[tuples[0] for tuples in avg_price_by_genre()],
+        mode='markers',
+        marker=dict(color='rgb(93, 164, 214)', size=10)
+        )
+        ],
+        layout = go.Layout(
+            title='Average Minimum Ticket Price by Genre'
+        )))])
 
 #generate graph for top genres / borough in tab1
 @app.callback(

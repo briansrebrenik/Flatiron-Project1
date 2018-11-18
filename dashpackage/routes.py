@@ -33,7 +33,7 @@ def concerts_on_this_date(year, month, day):
 
 #find average minimum price by genre
 def avg_price_by_genre():
-    return session.query(Genre.name, sqlalchemy.func.avg(Concert.minimum_price)).join(Concert).group_by(Genre.name).all()
+    return db.session.query(Genre.name, func.avg(Concert.minimum_price)).join(Concert).group_by(Genre.name).all()
 
 #finds number of concerts in each borough at this price or less
 def concerts_at_price(price):
