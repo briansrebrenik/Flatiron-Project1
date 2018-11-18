@@ -22,7 +22,7 @@ app.layout = html.Div(children=[
         dcc.Tab(label='Average Price by Genre', value='tab-4')
     ]),
     html.Div(id='tabs-content')
-])
+],)
 @app.callback(Output('tabs-content', 'children'),
               [Input('tabs', 'value')])
 def display_content(value):
@@ -40,7 +40,7 @@ def display_content(value):
         html.Div(id='borough-genre-output-container')])
     elif value == 'tab-2':
         #generate graph for tab2
-        return html.Div([dcc.Graph(figure= go.Figure(data = [
+        return html.Div([dcc.Graph(style= {'height':800}, figure= go.Figure(data = [
             go.Scatter(
                 x=[tuples[1] for tuples in avg_price_neighborhood()],
                 y=[tuples[0] for tuples in avg_price_neighborhood()],
@@ -50,11 +50,12 @@ def display_content(value):
         ],
         layout = go.Layout(
             title='Average Minimum Ticket Price in NYC Neighborhoods'
-        ))
-        )])
+        )),
+        )],
+        )
     elif value == 'tab-3':
         #generate map for tab3
-        return html.Div([dcc.Graph(figure= go.Figure(data= [
+        return html.Div([dcc.Graph(style= {'height':800}, figure= go.Figure(data= [
         go.Scattermapbox(
         lat=[location[0] for location in locations_of_free_concerts()],
         lon=[location[1] for location in locations_of_free_concerts()],
@@ -79,7 +80,7 @@ def display_content(value):
         ))])
     elif value == 'tab-4':
         #generate graph for tab4
-        return html.Div([dcc.Graph(figure= go.Figure(data= [
+        return html.Div([dcc.Graph(style= {'height':800}, figure= go.Figure(data= [
         go.Scatter(
         x=[tuples[1] for tuples in avg_price_by_genre()],
         y=[tuples[0] for tuples in avg_price_by_genre()],
