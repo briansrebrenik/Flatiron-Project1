@@ -12,9 +12,9 @@ app.config['suppress_callback_exceptions']=True
 
 
 app.layout = html.Div(children=[
-            html.Img(src='/assets/pic11.jpg'),
-            html.H1("NYC Concert Database"),
-
+            html.Div(className="app-header", children=[
+            html.Img(src='/assets/pic10.jpg'),
+            html.H1("Kids Just Want to Dance! - An NYC Concert Database")]),
             dcc.Tabs(id="tabs", value="tab-1", children=[
         dcc.Tab(label='Top Genres', value='tab-1'),
         dcc.Tab(label='Average Price by Neighborhood', value='tab-2'),

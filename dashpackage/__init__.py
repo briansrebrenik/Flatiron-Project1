@@ -10,7 +10,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 db = SQLAlchemy(server)
 
-app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/', external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/')
 
 from dashpackage.models import *
 from dashpackage.routes import *
