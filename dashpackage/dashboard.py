@@ -15,7 +15,8 @@ app.layout = html.Div(children=[
             html.Div(className="container", children=[
             html.Img(src='/assets/pic10.jpg'),
             html.Div(className="centered", children=[
-            html.H1("🤘 Kids Just Want to Dance! - An NYC Concert Database 🤘")])]),
+            html.H1("🤘 Kids Just Want to Dance! 🤘"),
+            html.H1("An NYC Concert Database")])]),
             dcc.Tabs(id="tabs", value="tab-1", children=[
         dcc.Tab(label='Top Genres', value='tab-1'),
         dcc.Tab(label='Average Price by Neighborhood', value='tab-2'),
