@@ -24,7 +24,7 @@ def most_free_concerts():
 
 #find coordinates of free concerts
 def locations_of_free_concerts():
-    return db.session.query(Venue.latitude, Venue.longitude).join(Concert).filter(Concert.minimum_price == 0).all()
+    return db.session.query(Venue.latitude, Venue.longitude, Concert.name).join(Concert).filter(Concert.minimum_price == 0).all()
 
 #date queries example
 import datetime

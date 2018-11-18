@@ -59,7 +59,8 @@ def display_content(value):
         go.Scattermapbox(
         lat=[location[0] for location in locations_of_free_concerts()],
         lon=[location[1] for location in locations_of_free_concerts()],
-        mode='markers'
+        mode='markers',
+        text=[location[2] for location in locations_of_free_concerts()]
         )
         ],
         layout = go.Layout(
@@ -74,7 +75,7 @@ def display_content(value):
         ),
         style='dark',
         pitch=0,
-        zoom=9
+        zoom=11
         ),
         )
         ))])
