@@ -37,5 +37,5 @@ much of the artist information on the Ticketmaster API was able to connect easil
 However because of Eventbrite’s inconsistent event pages’ formatting, its artists were unable to pull through.
 Although artists could’ve been potentially helpful to our project, this was not a major issue because other data could answer much more questions.
 
-![alt text](https://raw.githubusercontent.com/briansrebrenik/projectname/Mod-1-Project/screenshots/ScreenShot2018-11-19at1.23.52PM.png)
+![alt text](https://github.com/briansrebrenik/Mod-1-Project/blob/master/screenshots/Screen%20Shot%202018-11-19%20at%201.23.52%20PM.png?raw=true)
 
