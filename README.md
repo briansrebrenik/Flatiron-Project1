@@ -15,8 +15,7 @@ What we used:
 
 
 ## OVERVIEW
-We wanted to look into something music related and found that Ticketmaster had a terrific API that
-provided a ton of data based on what we were looking for. The data included up to a year in advance of data which
+The purpose of our project was to determine the affordability and genre variety of the live music scene in New York City. In order to compile concert data, we used the Ticketmaster API. The data available included concert data up to a year in advance of show date and
 consisted of information like name, genre, location, start/end date, price, and venue. To create an even fuller database,
 we also pulled from Eventbrite’s API. This contained very similar information to
 Ticketmaster’s. In total, we have 2,224 clean, usable events. Armed with this data, we could answer the following k
