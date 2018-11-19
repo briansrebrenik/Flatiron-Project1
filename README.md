@@ -18,8 +18,7 @@ What we used:
 The purpose of our project was to determine the affordability and genre variety of the live music scene in New York City. In order to compile concert data, we used the Ticketmaster API. The data available included concert data up to a year in advance of show date and
 consisted of information like name, genre, location, start/end date, price, and venue. To create an even fuller database,
 we also pulled from Eventbrite’s API. This contained very similar information to
-Ticketmaster’s. In total, we have 2,224 clean, usable events. Armed with this data, we could answer the following k
-ey questions : “What type of music is popular in NYC? What’s the affordability of music in NYC?
+Ticketmaster’s. In total, we have 2,224 clean, usable events. Armed with this data, we could answer the following key questions : “What type of music is popular in NYC? What’s the affordability of music in NYC?
 Average entry price by genre? Per neighborhood? and Where are the free concerts located?”
 
 Our SQL Database Schema consisted of building relationships centered around Concert.
@@ -37,6 +36,8 @@ the most occurring website by far, allowed us to freely scrape for data. Another
 much of the artist information on the Ticketmaster API was able to connect easily into our database.
 However because of Eventbrite’s inconsistent event pages’ formatting, its artists were unable to pull through.
 Although artists could’ve been potentially helpful to our project, this was not a major issue because other data could answer much more questions.
+
+##Plotting the Data Collected
 
 ![alt text](https://github.com/briansrebrenik/Mod-1-Project/blob/master/screenshots/Screen%20Shot%202018-11-19%20at%203.33.41%20PM.png)
 ![alt text](https://github.com/briansrebrenik/Mod-1-Project/blob/master/screenshots/Screen%20Shot%202018-11-19%20at%203.34.05%20PM.png)
