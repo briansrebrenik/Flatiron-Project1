@@ -84,11 +84,11 @@ def display_content(value):
     elif value == 'tab-4':
         #generate graph for tab4
         return html.Div([dcc.Graph(style= {'height':800}, figure= go.Figure(data= [
-        go.Scatter(
+        go.Bar(
         x=[tuples[1] for tuples in avg_price_by_genre()],
         y=[tuples[0] for tuples in avg_price_by_genre()],
-        mode='markers',
-        marker=dict(color='rgb(93, 164, 214)', size=10)
+        marker=dict(color='rgba(50, 171, 96, 0.6)', line=dict(color='rgba(50, 171, 96, 1.0)')),
+        orientation= 'h'
         )
         ],
         layout = go.Layout(
